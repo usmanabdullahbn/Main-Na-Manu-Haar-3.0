@@ -38,7 +38,7 @@ export default function EntryPopup({ formUrl }) {
         <strong>Submissions Are Open</strong>
       </div>
       <p className="popup__msg">
-        Share your story of falling, rising and trying again. Entries close on <strong>25 November 2026</strong>.
+        Share your story of resilience through art or writing. Entries close on <strong>25 November 2026</strong>.
       </p>
       <a className="popup__btn" href={formUrl} target="_blank" rel="noopener noreferrer" onClick={dismiss}>
         Submit Your Entry

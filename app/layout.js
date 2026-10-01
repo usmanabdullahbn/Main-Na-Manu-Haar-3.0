@@ -9,13 +9,13 @@ const urdu = Noto_Nastaliq_Urdu({
 });
 
 export const metadata = {
-  title: "Main Na Manu Haar 3.0 — I fall, I rise, I try again",
+  title: "Mein Na Mano Haar 3.0 | Creative Competition on Resilience",
   description:
-    "A national and international creative competition for ages 8+. Submit Visual Art or Written Works (English, Urdu, Arabic). Cash prizes, e-certificates and a place in the official digital anthology. Submissions close 25 November 2026.",
+    "After two successful years and 700+ entries received, Mein Na Mano Haar is now entering its third year. A national and international creative competition for ages 8+. Submit Visual Art or Written Works in English, Urdu or Arabic. Submissions close 25 November 2026.",
   openGraph: {
-    title: "Main Na Manu Haar 3.0",
+    title: "Mein Na Mano Haar 3.0",
     description:
-      "I fall, I rise, I try again. A creative competition on resilience for ages 8+. Submissions close 25 November 2026.",
+      "After two successful years, Mein Na Mano Haar is now entering its third year. A creative competition on resilience for ages 8+. Submissions close 25 November 2026.",
     type: "website",
   },
 };

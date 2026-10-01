@@ -1,10 +1,8 @@
+import Image from "next/image";
 import Countdown from "./Countdown";
 import EntryPopup from "./EntryPopup";
 import Header from "./Header";
-
-const FORM_URL = "https://forms.gle/rkHUMTWjmPKj9m8z8";
-
-const ORGANIZERS = ["Arture", "The Wellness Club", "Saudagran Youth Forum"];
+import { FORM_URL, JUDGES, ORGANIZERS, RULES, RULES_ARE_FINAL, SOCIAL_LINKS } from "./content";
 
 function EnterButton({ children = "Submit Your Entry", variant = "primary" }) {
   return (
@@ -14,8 +12,32 @@ function EnterButton({ children = "Submit Your Entry", variant = "primary" }) {
   );
 }
 
+function SocialLinks({ className }) {
+  if (!SOCIAL_LINKS.length) return null;
+  return (
+    <ul className={`social ${className}`}>
+      {SOCIAL_LINKS.map(({ platform, handle, href }) => (
+        <li key={href}>
+          <a href={href} target="_blank" rel="noopener noreferrer">
+            <span className="social__platform">{platform}</span> {handle}
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function initials(name) {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((word) => word[0].toUpperCase())
+    .join("");
+}
+
 function RiseLine() {
-  // Fall, rise, fall a little, rise higher — the journey the theme describes
+  // Fall, rise, fall a little, rise higher: the journey the theme describes
   return (
     <svg className="rise" viewBox="0 0 600 270" aria-hidden="true">
       <defs>
@@ -34,11 +56,8 @@ function RiseLine() {
       />
       <g className="rise-labels">
         <circle cx="150" cy="225" r="8" />
-        <text x="150" y="258" textAnchor="middle">I fall</text>
         <circle cx="280" cy="110" r="8" />
-        <text x="280" y="88" textAnchor="middle">I rise</text>
         <circle cx="380" cy="160" r="8" />
-        <text x="380" y="194" textAnchor="middle">I try again</text>
       </g>
       <circle className="rise-sun" cx="560" cy="30" r="16" />
     </svg>
@@ -92,7 +111,28 @@ const icons = {
       />
     </svg>
   ),
+  check: (
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="M5 12.5l4.5 4.5L19 7.5" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ),
+  star: (
+    <svg viewBox="0 0 24 24" fill="none">
+      <path
+        d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9L12 3.5Z"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
 };
+
+const JOURNEY = [
+  { year: "Year One", status: "Successfully completed", done: true },
+  { year: "Year Two", status: "Successfully completed", done: true },
+  { year: "Year Three", status: "Now open for entries", done: false },
+];
 
 export default function Home() {
   return (
@@ -110,23 +150,24 @@ export default function Home() {
               <div>
                 <span className="eyebrow">National &amp; International • Ages 8+</span>
                 <h1>
-                  Main Na Manu Haar <span className="hero__version">3.0</span>
+                  Mein Na Mano Haar <span className="hero__version">3.0</span>
                 </h1>
                 <p className="hero__urdu" lang="ur" dir="rtl">
                   میں نہ مانوں ہار
                 </p>
                 <p>
-                  <strong className="hero__tagline">I fall, I rise, I try again.</strong> Our failures are not stop
-                  signs — they are steps on the path to our goals.
+                  <strong className="hero__tagline">
+                    After two successful years, Mein Na Mano Haar is now entering its third year.
+                  </strong>
                 </p>
                 <p>
-                  Share your journey through art or writing, and inspire others to keep going. Submissions close on 25
-                  November 2026.
+                  Our failures are not stop signs. They are steps on the path to our goals. Share your journey through
+                  art or writing and inspire others to keep going. Submissions close on 25 November 2026.
                 </p>
                 <div className="btn-row">
                   <EnterButton />
-                  <a className="btn btn--ghost" href="#categories">
-                    Explore Categories
+                  <a className="btn btn--ghost" href="#rules">
+                    Read the Rules
                   </a>
                 </div>
               </div>
@@ -134,6 +175,9 @@ export default function Home() {
                 <div className="media ratio-43 hero-art">
                   <span className="hero-art__label">The Journey</span>
                   <RiseLine />
+                  <span className="hero-art__badge">
+                    <strong>700+</strong> entries received
+                  </span>
                 </div>
               </div>
             </div>
@@ -144,20 +188,20 @@ export default function Home() {
         <section className="section section--dark" id="glance">
           <div className="container">
             <div className="section-head">
-              <h2>The Competition at a Glance</h2>
+              <h2>The Campaign at a Glance</h2>
             </div>
             <div className="grid grid-4">
+              <div className="stat stat--featured">
+                <div className="stat__num">700+</div>
+                <div className="stat__label">Entries Received</div>
+              </div>
+              <div className="stat">
+                <div className="stat__num">3rd</div>
+                <div className="stat__label">Year of the Campaign</div>
+              </div>
               <div className="stat">
                 <div className="stat__num">8+</div>
                 <div className="stat__label">Minimum Age</div>
-              </div>
-              <div className="stat">
-                <div className="stat__num">2</div>
-                <div className="stat__label">Categories</div>
-              </div>
-              <div className="stat">
-                <div className="stat__num">3</div>
-                <div className="stat__label">Languages</div>
               </div>
               <div className="stat">
                 <div className="stat__num">5,000</div>
@@ -172,27 +216,25 @@ export default function Home() {
           <div className="container">
             <div className="split">
               <div>
-                <figure className="media ratio-43 quote-panel">
+                <div className="media ratio-43 quote-panel">
                   <span className="quote-panel__mark" aria-hidden="true">
                     &ldquo;
                   </span>
                   <blockquote>
-                    <p className="quote-panel__roman">Musalmaan haar nahi maantaa.</p>
+                    <p className="quote-panel__text">A believer never gives up.</p>
                   </blockquote>
-                  <figcaption className="quote-panel__en">A believer never gives up.</figcaption>
-                </figure>
+                </div>
               </div>
               <div>
                 <span className="eyebrow">The Theme</span>
-                <h2>Understanding Defeat Is Where True Success Begins</h2>
+                <h2>Every Setback Is a Step Towards Success</h2>
                 <p>
-                  <strong>Main Na Manu Haar 3.0</strong> is a creative competition built to cultivate future leaders by
+                  <strong>Mein Na Mano Haar 3.0</strong> is a creative competition built to cultivate future leaders by
                   developing deep inner strength and emotional resilience.
                 </p>
                 <p>
                   It champions a simple but vital shift in mindset: the challenges we face are meant to propel us
-                  forward, not hold us back. Rooted in the theme <em>&ldquo;Mein Manu Haar — I fall, I rise, I try
-                  again,&rdquo;</em> we invite young people to reflect on their yearly journeys, their personal
+                  forward, not hold us back. We invite young people to reflect on their yearly journeys, their personal
                   struggles and the victories that followed.
                 </p>
                 <div className="btn-row">
@@ -203,21 +245,29 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Message */}
-        <section className="section section--soft" id="message">
+        {/* Journey */}
+        <section className="section section--soft" id="journey">
           <div className="container">
             <div className="section-head">
-              <span className="eyebrow">Our Message</span>
-              <h2>I Fall. I Rise. I Try Again.</h2>
+              <span className="eyebrow">Our Journey</span>
+              <h2>Now Entering Our Third Year</h2>
               <p>
-                Every one of us has stumbled — in school, at home, in our dreams. What defines us is not the fall, but
-                the decision to stand back up.
-              </p>
-              <p>
-                Main Na Manu Haar gives young people a space to turn those moments into art and words, so that their
-                journeys can light the way for someone else who is still finding the strength to rise.
+                Two successful years are behind us, and more than 700 entries have been received from young people who
+                turned their setbacks into art and words. Now Mein Na Mano Haar enters its third year, and your story
+                could be next.
               </p>
             </div>
+            <ol className="grid grid-3 journey">
+              {JOURNEY.map(({ year, status, done }) => (
+                <li className={`card journey__step${done ? "" : " journey__step--current"}`} key={year}>
+                  <div className="card__icon" aria-hidden="true">
+                    {done ? icons.check : icons.star}
+                  </div>
+                  <h3>{year}</h3>
+                  <p>{status}</p>
+                </li>
+              ))}
+            </ol>
           </div>
         </section>
 
@@ -228,14 +278,14 @@ export default function Home() {
               <span className="eyebrow">Two Ways to Take Part</span>
               <h2>Competition Categories</h2>
             </div>
-            <div className="grid grid-2 categories">
+            <div className="grid grid-2">
               <div className="card">
                 <div className="card__icon" aria-hidden="true">
                   {icons.art}
                 </div>
                 <h3>Visual Art</h3>
                 <p>
-                  Paint, draw, sketch or design a piece that captures a moment you fell — and the strength it took to
+                  Paint, draw, sketch or design a piece that captures a moment you fell and the strength it took to
                   rise again.
                 </p>
               </div>
@@ -256,21 +306,32 @@ export default function Home() {
                 </ul>
               </div>
             </div>
-            <div className="card">
-              <h3>Who Can Enter?</h3>
-              <ul className="check">
-                <li>Anyone aged 8 and above can take part</li>
-                <li>Open to participants from Pakistan and anywhere in the world</li>
-                <li>Entries are judged across multiple age brackets, so you compete with people your own age</li>
-                <li>Written works are accepted in English, Urdu and Arabic</li>
-                <li>All entries are submitted through the official online entry form</li>
-              </ul>
+          </div>
+        </section>
+
+        {/* Rules */}
+        <section className="section section--soft" id="rules">
+          <div className="container">
+            <div className="section-head">
+              <span className="eyebrow">Before You Submit</span>
+              <h2>Rules &amp; Regulations</h2>
+              <p>Please read the rules carefully before submitting your entry.</p>
+            </div>
+            <div className="card rules">
+              <ol className="rules__list">
+                {RULES.map((rule) => (
+                  <li key={rule}>{rule}</li>
+                ))}
+              </ol>
+              {!RULES_ARE_FINAL && (
+                <p className="rules__note">The complete rules and regulations will be published here soon.</p>
+              )}
             </div>
           </div>
         </section>
 
         {/* How to enter */}
-        <section className="section section--soft" id="how-to-enter">
+        <section className="section" id="how-to-enter">
           <div className="container">
             <div className="split">
               <div>
@@ -292,7 +353,10 @@ export default function Home() {
                   <li className="step">
                     <div>
                       <strong>Submit</strong>
-                      <p>Send your entry through the official online form before 25 November 2026.</p>
+                      <p>
+                        Read the <a href="#rules">rules</a>, then send your entry through the official online form
+                        before 25 November 2026.
+                      </p>
                     </div>
                   </li>
                 </ol>
@@ -313,7 +377,7 @@ export default function Home() {
         </section>
 
         {/* Prizes */}
-        <section className="section" id="prizes">
+        <section className="section section--soft" id="prizes">
           <div className="container">
             <div className="section-head">
               <span className="eyebrow">What You Can Win</span>
@@ -349,7 +413,7 @@ export default function Home() {
         </section>
 
         {/* Key dates */}
-        <section className="section section--soft" id="dates">
+        <section className="section" id="dates">
           <div className="container">
             <div className="section-head">
               <span className="eyebrow">Key Dates</span>
@@ -364,7 +428,7 @@ export default function Home() {
               <div className="card">
                 <div className="card__icon card__icon--num">02</div>
                 <h3>25 November 2026</h3>
-                <p>Last date to submit your entry. Late entries cannot be accepted.</p>
+                <p>Last date to submit your entry.</p>
               </div>
               <div className="card">
                 <div className="card__icon card__icon--num">03</div>
@@ -375,6 +439,35 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Judges */}
+        <section className="section section--soft" id="judges">
+          <div className="container">
+            <div className="section-head">
+              <span className="eyebrow">Meet the Panel</span>
+              <h2>Our Judges</h2>
+              <p>Every entry is carefully reviewed by our panel of judges.</p>
+            </div>
+            {JUDGES.length ? (
+              <ul className="grid grid-3 judges">
+                {JUDGES.map(({ name, title }) => (
+                  <li className="card judge" key={name}>
+                    <div className="judge__avatar" aria-hidden="true">
+                      {initials(name)}
+                    </div>
+                    <h3>{name}</h3>
+                    {title && <p>{title}</p>}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <div className="card judges-soon">
+                <h3>To Be Announced Soon</h3>
+                <p>The judges for Mein Na Mano Haar 3.0 will be revealed here shortly. Stay tuned.</p>
+              </div>
+            )}
+          </div>
+        </section>
+
         {/* Organisers */}
         <section className="section section--dark" id="organisers">
           <div className="container">
@@ -382,14 +475,19 @@ export default function Home() {
               <span className="eyebrow">Jointly Organised By</span>
               <h2>Brought to You Together</h2>
               <p>
-                Main Na Manu Haar 3.0 is a joint effort to help young people build resilience and share their stories
+                Mein Na Mano Haar 3.0 is a joint effort to help young people build resilience and share their stories
                 with the world.
               </p>
             </div>
             <ul className="grid grid-3 organisers">
-              {ORGANIZERS.map((name) => (
-                <li className="stat" key={name}>
-                  <div className="stat__name">{name}</div>
+              {ORGANIZERS.map(({ name, logo }) => (
+                <li className="org" key={name}>
+                  {logo && (
+                    <div className="org__logo">
+                      <Image src={logo} alt={`${name} logo`} fill sizes="220px" />
+                    </div>
+                  )}
+                  <span className={logo ? "org__name" : "org__name org__name--solo"}>{name}</span>
                 </li>
               ))}
             </ul>
@@ -402,12 +500,13 @@ export default function Home() {
             <div className="card cta-card">
               <h2>Don&rsquo;t Wait for the Perfect Moment</h2>
               <p>
-                Your story of falling, rising and trying again could be exactly what someone else needs to hear.
-                Submit your entry before 25 November 2026.
+                Your story of never giving up could be exactly what someone else needs to hear. Submit your entry
+                before 25 November 2026.
               </p>
               <div className="btn-row btn-row--center">
                 <EnterButton variant="dark" />
               </div>
+              <SocialLinks className="social--cta" />
             </div>
           </div>
         </section>
@@ -417,23 +516,24 @@ export default function Home() {
         <div className="container">
           <div className="footer__grid">
             <div>
-              <h4>Main Na Manu Haar 3.0</h4>
+              <h4>Mein Na Mano Haar 3.0</h4>
               <p>
-                A national and international creative competition on resilience for ages 8 and above. I fall, I rise,
-                I try again.
+                A national and international creative competition on resilience for ages 8 and above, now in its third
+                year.
               </p>
+              <SocialLinks className="social--footer" />
             </div>
             <div>
               <h4>Quick Links</h4>
               <ul className="footer__links">
                 <li>
-                  <a href="#top">Home</a>
-                </li>
-                <li>
                   <a href="#about">About</a>
                 </li>
                 <li>
                   <a href="#categories">Categories</a>
+                </li>
+                <li>
+                  <a href="#rules">Rules &amp; Regulations</a>
                 </li>
                 <li>
                   <a href="#how-to-enter">How to Enter</a>
@@ -450,6 +550,9 @@ export default function Home() {
                   <a href="#dates">Key Dates</a>
                 </li>
                 <li>
+                  <a href="#judges">Judges</a>
+                </li>
+                <li>
                   <a href="#organisers">Organisers</a>
                 </li>
                 <li>
@@ -462,6 +565,7 @@ export default function Home() {
             <div>
               <h4>Key Info</h4>
               <ul className="footer__links">
+                <li>700+ entries received</li>
                 <li>Last date: 25 November 2026</li>
                 <li>Open to ages 8+</li>
                 <li>Results: January 2027</li>
@@ -472,8 +576,11 @@ export default function Home() {
         </div>
         <div className="footer__bottom">
           <div className="container">
-            © 2026 Main Na Manu Haar 3.0 · Jointly organised by {ORGANIZERS.slice(0, -1).join(", ")} &amp;{" "}
-            {ORGANIZERS.at(-1)}.
+            © 2026 Mein Na Mano Haar 3.0 · Jointly organised by{" "}
+            {ORGANIZERS.slice(0, -1)
+              .map((org) => org.name)
+              .join(", ")}{" "}
+            &amp; {ORGANIZERS.at(-1).name}.
           </div>
         </div>
       </footer>

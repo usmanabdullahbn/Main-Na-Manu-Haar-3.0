@@ -495,6 +495,28 @@ li {
   box-shadow: 0 24px 60px rgba(10, 6, 24, 0.35);
 }
 
+.hero-art__badge {
+  position: absolute;
+  left: 24px;
+  bottom: 22px;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 50px;
+  background: var(--accent-gradient);
+  color: var(--ink);
+  font-family: var(--heading-font);
+  font-weight: 600;
+  font-size: 0.92rem;
+  box-shadow: 0 10px 30px -10px rgba(232, 87, 60, 0.7);
+}
+
+.hero-art__badge strong {
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
 .hero-art__label {
   position: absolute;
   top: 22px;
@@ -523,13 +545,6 @@ li {
   fill: var(--night);
   stroke: var(--accent);
   stroke-width: 3;
-}
-
-.rise-labels text {
-  font-family: var(--heading-font);
-  font-weight: 600;
-  font-size: 19px;
-  fill: var(--on-dark);
 }
 
 .rise-labels,
@@ -596,6 +611,21 @@ li {
   font-size: 0.98rem;
 }
 
+.stat--featured {
+  background: var(--accent-gradient);
+  border-color: transparent;
+  box-shadow: 0 16px 40px -14px rgba(232, 87, 60, 0.75);
+}
+
+.stat--featured .stat__num {
+  color: var(--ink);
+}
+
+.stat--featured .stat__label {
+  color: rgba(27, 20, 51, 0.8);
+  font-weight: 600;
+}
+
 .stat__name {
   font-family: var(--heading-font);
   font-weight: 700;
@@ -610,11 +640,41 @@ li {
   margin: 0;
 }
 
-.organisers .stat {
+.org {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 110px;
+  gap: 14px;
+  min-height: 190px;
+  padding: 24px;
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: 0 20px 50px rgba(10, 6, 24, 0.3);
+  text-align: center;
+}
+
+.org__logo {
+  position: relative;
+  width: 100%;
+  max-width: 220px;
+  height: 96px;
+}
+
+.org__logo img {
+  object-fit: contain;
+}
+
+.org__name {
+  font-family: var(--heading-font);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.org__name--solo {
+  font-size: 1.35rem;
 }
 
 /* ---------- About quote panel ---------- */
@@ -645,18 +705,12 @@ li {
   margin-bottom: 18px;
 }
 
-.quote-panel__roman {
+.quote-panel__text {
   font-family: var(--heading-font);
   font-weight: 700;
-  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
-  line-height: 1.25;
-  margin: 0 0 14px;
-}
-
-.quote-panel__en {
-  color: var(--accent);
-  font-style: italic;
-  font-size: 1.08rem;
+  font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+  line-height: 1.2;
+  margin: 0;
 }
 
 /* ---------- Cards ---------- */
@@ -712,10 +766,6 @@ li {
 
 .card__highlight {
   color: var(--accent-2);
-}
-
-.categories {
-  margin-bottom: 26px;
 }
 
 .chips {
@@ -775,6 +825,182 @@ li {
   align-items: center;
   justify-content: center;
   font-weight: 700;
+}
+
+.journey {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.journey__step {
+  text-align: center;
+}
+
+.journey__step .card__icon {
+  margin: 0 auto 18px;
+  background: var(--ink);
+  color: var(--accent);
+}
+
+.journey__step--current {
+  background: var(--accent-gradient);
+  border-color: transparent;
+}
+
+.journey__step--current .card__icon {
+  background: var(--ink);
+}
+
+.journey__step--current p {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ---------- Rules ---------- */
+
+.rules {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 36px 40px;
+}
+
+.rules:hover {
+  transform: none;
+}
+
+.rules__list {
+  counter-reset: rule;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.rules__list li {
+  counter-increment: rule;
+  position: relative;
+  padding-left: 46px;
+  min-height: 32px;
+  color: var(--ink);
+}
+
+.rules__list li::before {
+  content: counter(rule);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  color: var(--ink);
+  font-family: var(--heading-font);
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rules__note {
+  margin: 26px 0 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+/* ---------- Judges ---------- */
+
+.judges {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.judge {
+  text-align: center;
+}
+
+.judge__avatar {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--accent);
+  font-family: var(--heading-font);
+  font-weight: 800;
+  font-size: 1.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 4px var(--paper), 0 0 0 6px var(--accent);
+}
+
+.judges-soon {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  border-style: dashed;
+}
+
+/* ---------- Social ---------- */
+
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.social a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: all var(--transition);
+}
+
+.social__platform {
+  font-weight: 700;
+}
+
+.social--footer {
+  margin-top: 18px;
+}
+
+.footer .social--footer a {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--on-dark);
+}
+
+.footer .social--footer a:hover {
+  background: var(--accent-gradient);
+  color: var(--ink);
+}
+
+.social--cta {
+  justify-content: center;
+  margin-top: 22px;
+}
+
+.social--cta a {
+  border: 1.5px solid rgba(27, 20, 51, 0.35);
+  color: var(--ink);
+}
+
+.social--cta a:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--on-dark);
 }
 
 /* ---------- Steps & deadline ---------- */
@@ -1053,7 +1279,7 @@ li {
 
 /* ---------- Responsive ---------- */
 
-@media (max-width: 1024px) {
+@media (max-width: 1180px) {
   .burger {
     display: block;
   }
@@ -1197,7 +1423,16 @@ li {
   }
 
   .hero-art {
-    padding: 40px 14px 16px;
+    padding: 40px 14px 56px;
+  }
+
+  .hero-art__badge {
+    left: 14px;
+    bottom: 14px;
+  }
+
+  .rules {
+    padding: 26px 20px;
   }
 
   .countdown-label {
