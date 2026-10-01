@@ -1,17 +1,5 @@
-import { Fraunces, Inter, Noto_Nastaliq_Urdu } from "next/font/google";
+import { Noto_Nastaliq_Urdu } from "next/font/google";
 import "./globals.css";
-
-const display = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const body = Inter({
-  subsets: ["latin"],
-  variable: "--font-body",
-  display: "swap",
-});
 
 const urdu = Noto_Nastaliq_Urdu({
   subsets: ["arabic"],
@@ -38,7 +26,7 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable} ${urdu.variable}`}>
+    <html lang="en" className={urdu.variable}>
       <body>{children}</body>
     </html>
   );
