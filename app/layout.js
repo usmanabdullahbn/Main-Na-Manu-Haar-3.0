@@ -11,7 +11,7 @@ const urdu = Noto_Nastaliq_Urdu({
 export const metadata = {
   title: "Mein Na Mano Haar 3.0 | Creative Competition on Resilience",
   description:
-    "After two successful years and 700+ entries received, Mein Na Mano Haar is now entering its third year. A national and international creative competition for ages 8+. Submit Visual Art or Written Works in English, Urdu or Arabic. Submissions close 25 November 2026.",
+    "Mein Na Mano Haar is an annual creative competition running since 2023 for ages 8+. Submit Visual Art or Written Works in English, Urdu or Arabic. Submissions close 25 November 2026.",
   openGraph: {
     title: "Mein Na Mano Haar 3.0",
     description:

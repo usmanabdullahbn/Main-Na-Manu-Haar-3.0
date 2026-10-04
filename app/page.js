@@ -128,12 +128,6 @@ const icons = {
   ),
 };
 
-const JOURNEY = [
-  { year: "Year One", status: "Successfully completed", done: true },
-  { year: "Year Two", status: "Successfully completed", done: true },
-  { year: "Year Three", status: "Now open for entries", done: false },
-];
-
 export default function Home() {
   return (
     <>
@@ -173,11 +167,8 @@ export default function Home() {
               </div>
               <div>
                 <div className="media ratio-43 hero-art">
-                  <span className="hero-art__label">The Journey</span>
+                  <span className="hero-art__label">From Setback to Strength</span>
                   <RiseLine />
-                  <span className="hero-art__badge">
-                    <strong>700+</strong> entries received
-                  </span>
                 </div>
               </div>
             </div>
@@ -192,16 +183,12 @@ export default function Home() {
             </div>
             <div className="grid grid-4">
               <div className="stat stat--featured">
-                <div className="stat__num">700+</div>
-                <div className="stat__label">Entries Received</div>
-              </div>
-              <div className="stat">
-                <div className="stat__num">3rd</div>
-                <div className="stat__label">Year of the Campaign</div>
-              </div>
-              <div className="stat">
                 <div className="stat__num">8+</div>
                 <div className="stat__label">Minimum Age</div>
+              </div>
+              <div className="stat">
+                <div className="stat__num">2023</div>
+                <div className="stat__label">Annual Competition Since</div>
               </div>
               <div className="stat">
                 <div className="stat__num">5,000</div>
@@ -233,9 +220,8 @@ export default function Home() {
                   developing deep inner strength and emotional resilience.
                 </p>
                 <p>
-                  It champions a simple but vital shift in mindset: the challenges we face are meant to propel us
-                  forward, not hold us back. We invite young people to reflect on their yearly journeys, their personal
-                  struggles and the victories that followed.
+                  The competition encourages young people to see challenges as opportunities to grow. We invite them to
+                  reflect on personal struggles, how they kept going, and the victories that followed.
                 </p>
                 <div className="btn-row">
                   <EnterButton />
@@ -252,22 +238,11 @@ export default function Home() {
               <span className="eyebrow">Our Journey</span>
               <h2>Now Entering Our Third Year</h2>
               <p>
-                Two successful years are behind us, and more than 700 entries have been received from young people who
-                turned their setbacks into art and words. Now Mein Na Mano Haar enters its third year, and your story
-                could be next.
+                Two successful years, over 700 entries, and countless stories of resilience transformed into art and
+                words. Mein Na Mano Haar now enters its third year. And this time, your story could be the one we’re
+                waiting to hear.
               </p>
             </div>
-            <ol className="grid grid-3 journey">
-              {JOURNEY.map(({ year, status, done }) => (
-                <li className={`card journey__step${done ? "" : " journey__step--current"}`} key={year}>
-                  <div className="card__icon" aria-hidden="true">
-                    {done ? icons.check : icons.star}
-                  </div>
-                  <h3>{year}</h3>
-                  <p>{status}</p>
-                </li>
-              ))}
-            </ol>
           </div>
         </section>
 
@@ -565,7 +540,6 @@ export default function Home() {
             <div>
               <h4>Key Info</h4>
               <ul className="footer__links">
-                <li>700+ entries received</li>
                 <li>Last date: 25 November 2026</li>
                 <li>Open to ages 8+</li>
                 <li>Results: January 2027</li>
