@@ -566,9 +566,7 @@ export default function Home() {
                 <li>
                   <a href="#dates">Key Dates</a>
                 </li>
-                <li>
-                  <a href="#judges">Judges</a>
-                </li>
+
                 <li>
                   <a href="#organisers">Organisers</a>
                 </li>
