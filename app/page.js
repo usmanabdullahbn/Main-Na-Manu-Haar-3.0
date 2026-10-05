@@ -295,8 +295,8 @@ export default function Home() {
             </div>
 
             <div className="rules-group">
-              <h3 className="rules-group__title">Art Competition</h3>
               <div className="card rules">
+                <h3 className="rules-group__title">Art Competition</h3>
                 <ol className="rules__list">
                   {ART_RULES.map((rule) => (
                     <li key={rule}>{rule}</li>
@@ -306,10 +306,10 @@ export default function Home() {
             </div>
 
             <div className="rules-group">
-              <h3 className="rules-group__title">
-                Writing Competition <span className="rules-group__sub">(English &amp; Urdu)</span>
-              </h3>
               <div className="card rules">
+                <h3 className="rules-group__title">
+                  Writing Competition <span className="rules-group__sub">(English &amp; Urdu)</span>
+                </h3>
                 {WRITING_RULES_EN_UR.map(({ heading, items }) => (
                   <div className="rules-sub" key={heading}>
                     <h4 className="rules-sub__heading">{heading}</h4>
@@ -324,10 +324,10 @@ export default function Home() {
             </div>
 
             <div className="rules-group">
-              <h3 className="rules-group__title">
-                Writing Competition <span className="rules-group__sub">(Arabic)</span>
-              </h3>
               <div className="card rules">
+                <h3 className="rules-group__title">
+                  Writing Competition <span className="rules-group__sub">(Arabic)</span>
+                </h3>
                 {WRITING_RULES_AR.map(({ heading, items }) => (
                   <div className="rules-sub" key={heading}>
                     <h4 className="rules-sub__heading">{heading}</h4>

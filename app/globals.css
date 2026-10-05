@@ -934,7 +934,9 @@ li {
 
 .rules-group__title {
   font-size: clamp(1.1rem, 1.8vw, 1.35rem);
-  margin-bottom: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--line);
   color: var(--ink);
 }
 
