@@ -2,7 +2,7 @@ import Image from "next/image";
 import Countdown from "./Countdown";
 import EntryPopup from "./EntryPopup";
 import Header from "./Header";
-import { FORM_URL, JUDGES, ORGANIZERS, RULES, RULES_ARE_FINAL, SOCIAL_LINKS } from "./content";
+import { ART_RULES, FORM_URL, JUDGES, ORGANIZERS, RULES_ARE_FINAL, SOCIAL_LINKS, WRITING_RULES_AR, WRITING_RULES_EN_UR } from "./content";
 
 function EnterButton({ children = "Submit Your Entry", variant = "primary" }) {
   return (
@@ -293,16 +293,57 @@ export default function Home() {
               <h2>Rules &amp; Regulations</h2>
               <p>Please read the rules carefully before submitting your entry.</p>
             </div>
-            <div className="card rules">
-              <ol className="rules__list">
-                {RULES.map((rule) => (
-                  <li key={rule}>{rule}</li>
-                ))}
-              </ol>
-              {!RULES_ARE_FINAL && (
-                <p className="rules__note">The complete rules and regulations will be published here soon.</p>
-              )}
+
+            <div className="rules-group">
+              <h3 className="rules-group__title">Art Competition</h3>
+              <div className="card rules">
+                <ol className="rules__list">
+                  {ART_RULES.map((rule) => (
+                    <li key={rule}>{rule}</li>
+                  ))}
+                </ol>
+              </div>
             </div>
+
+            <div className="rules-group">
+              <h3 className="rules-group__title">
+                Writing Competition <span className="rules-group__sub">(English &amp; Urdu)</span>
+              </h3>
+              <div className="card rules">
+                {WRITING_RULES_EN_UR.map(({ heading, items }) => (
+                  <div className="rules-sub" key={heading}>
+                    <h4 className="rules-sub__heading">{heading}</h4>
+                    <ul className="rules-sub__list">
+                      {items.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="rules-group">
+              <h3 className="rules-group__title">
+                Writing Competition <span className="rules-group__sub">(Arabic)</span>
+              </h3>
+              <div className="card rules">
+                {WRITING_RULES_AR.map(({ heading, items }) => (
+                  <div className="rules-sub" key={heading}>
+                    <h4 className="rules-sub__heading">{heading}</h4>
+                    <ul className="rules-sub__list">
+                      {items.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {!RULES_ARE_FINAL && (
+              <p className="rules__note">The complete rules and regulations will be published here soon.</p>
+            )}
           </div>
         </section>
 
