@@ -42,7 +42,7 @@ export const WRITING_RULES_EN_UR = [
     heading: "Topic",
     items: [
       "Urdu – Main Na Mano Haar",
-      "English – I fall, I rise, I try again",
+      "English – I rise, I fall, I try again",
     ],
   },
   {

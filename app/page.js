@@ -261,7 +261,7 @@ export default function Home() {
                 </div>
                 <h3>Visual Art</h3>
                 <p>
-                  Paint, draw, sketch or design a piece that captures a moment you fell and the strength it took to
+                  Paint, draw, sketch or design a piece that captures a moment you feel and the strength it took to
                   rise again.
                 </p>
               </div>
@@ -358,7 +358,7 @@ export default function Home() {
                   <li className="step">
                     <div>
                       <strong>Reflect</strong>
-                      <p>Think of a time you fell short, and how you found the strength to rise again.</p>
+                      <p>Think of a time you feel short, and how you found the strength to rise again.</p>
                     </div>
                   </li>
                   <li className="step">
@@ -416,7 +416,7 @@ export default function Home() {
                   {icons.certificate}
                 </div>
                 <h3>E-Certificates</h3>
-                <p>Official recognition for your participation and achievement.</p>
+                <p>Official recognition for participation and achievement.</p>
               </div>
               <div className="card">
                 <div className="card__icon" aria-hidden="true">
