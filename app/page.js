@@ -42,8 +42,8 @@ function RiseLine() {
     <svg className="rise" viewBox="0 0 600 270" aria-hidden="true">
       <defs>
         <linearGradient id="riseStroke" x1="0" y1="1" x2="1" y2="0">
-          <stop offset="0" stopColor="var(--accent-2)" />
-          <stop offset="1" stopColor="var(--accent)" />
+          <stop offset="0" stopColor="var(--accent)" />
+          <stop offset="1" stopColor="var(--gold)" />
         </linearGradient>
       </defs>
       <path
@@ -457,12 +457,11 @@ export default function Home() {
             <ul className="grid grid-3 organisers">
               {ORGANIZERS.map(({ name, logo }) => (
                 <li className="org" key={name}>
-                  {logo && (
-                    <div className="org__logo">
-                      <Image src={logo} alt={`${name} logo`} fill sizes="220px" />
-                    </div>
+                  {logo ? (
+                    <Image className="org__logo" src={logo} alt={name} sizes="(max-width: 760px) 80vw, 260px" />
+                  ) : (
+                    <span className="org__name org__name--solo">{name}</span>
                   )}
-                  <span className={logo ? "org__name" : "org__name org__name--solo"}>{name}</span>
                 </li>
               ))}
             </ul>
