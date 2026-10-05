@@ -144,14 +144,14 @@ export default function Home() {
               <div>
                 <span className="eyebrow">National &amp; International • Ages 8+</span>
                 <h1>
-                  Mein Na Mano Haar <span className="hero__version">3.0</span>
+                  Main Na Manu Haar <span className="hero__version">3.0</span>
                 </h1>
                 <p className="hero__urdu" lang="ur" dir="rtl">
                   میں نہ مانوں ہار
                 </p>
                 <p>
                   <strong className="hero__tagline">
-                    After two successful years, Mein Na Mano Haar is now entering its third year.
+                    After two successful years, Main Na Manu Haar is now entering its third year.
                   </strong>
                 </p>
                 <p>
@@ -216,7 +216,7 @@ export default function Home() {
                 <span className="eyebrow">The Theme</span>
                 <h2>Every Setback Is a Step Towards Success</h2>
                 <p>
-                  <strong>Mein Na Mano Haar 3.0</strong> is a creative competition built to cultivate future leaders by
+                  <strong>Main Na Manu Haar 3.0</strong> is a creative competition built to cultivate future leaders by
                   developing deep inner strength and emotional resilience.
                 </p>
                 <p>
@@ -239,7 +239,7 @@ export default function Home() {
               <h2>Now Entering Our Third Year</h2>
               <p>
                 Two successful years, over 700 entries, and countless stories of resilience transformed into art and
-                words. Mein Na Mano Haar now enters its third year. And this time, your story could be the one we’re
+                words. Main Na Manu Haar now enters its third year. And this time, your story could be the one we’re
                 waiting to hear.
               </p>
             </div>
@@ -437,7 +437,7 @@ export default function Home() {
             ) : (
               <div className="card judges-soon">
                 <h3>To Be Announced Soon</h3>
-                <p>The judges for Mein Na Mano Haar 3.0 will be revealed here shortly. Stay tuned.</p>
+                <p>The judges for Main Na Manu Haar 3.0 will be revealed here shortly. Stay tuned.</p>
               </div>
             )}
           </div>
@@ -450,7 +450,7 @@ export default function Home() {
               <span className="eyebrow">Jointly Organised By</span>
               <h2>Brought to You Together</h2>
               <p>
-                Mein Na Mano Haar 3.0 is a joint effort to help young people build resilience and share their stories
+                Main Na Manu Haar 3.0 is a joint effort to help young people build resilience and share their stories
                 with the world.
               </p>
             </div>
@@ -490,7 +490,7 @@ export default function Home() {
         <div className="container">
           <div className="footer__grid">
             <div>
-              <h4>Mein Na Mano Haar 3.0</h4>
+              <h4>Main Na Manu Haar 3.0</h4>
               <p>
                 A national and international creative competition on resilience for ages 8 and above, now in its third
                 year.
@@ -549,7 +549,7 @@ export default function Home() {
         </div>
         <div className="footer__bottom">
           <div className="container">
-            © 2026 Mein Na Mano Haar 3.0 · Jointly organised by{" "}
+            © 2026 Main Na Manu Haar 3.0 · Jointly organised by{" "}
             {ORGANIZERS.slice(0, -1)
               .map((org) => org.name)
               .join(", ")}{" "}
