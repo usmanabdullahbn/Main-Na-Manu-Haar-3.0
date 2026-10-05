@@ -51,9 +51,9 @@ export default function Header({ formUrl }) {
     <header className={`header${scrolled ? " is-scrolled" : ""}`}>
       <div className="container">
         <div className="header__inner">
-          <a href="#top" className="logo" aria-label="Main Na Manu Haar 3.0 home">
+          <a href="#top" className="logo" aria-label="Main Na Mano Haar 3.0 home">
             <span className="logo__badge">MNMH</span>
-            <span className="logo__name">Main Na Manu Haar 3.0</span>
+            <span className="logo__name">Main Na Mano Haar 3.0</span>
           </a>
 
           <nav className={`nav${open ? " is-open" : ""}`} id="primary-nav" aria-label="Primary">
