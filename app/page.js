@@ -169,6 +169,7 @@ export default function Home() {
                 <div className="media ratio-43 hero-art">
                   <span className="hero-art__label">From Setback to Strength</span>
                   <RiseLine />
+                  <span className="hero-art__tagline">I Rise, I Fall, I Try Again</span>
                 </div>
               </div>
             </div>

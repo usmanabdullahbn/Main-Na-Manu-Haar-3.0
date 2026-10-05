@@ -531,6 +531,20 @@ li {
   color: var(--accent);
 }
 
+.hero-art__tagline {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--heading-font);
+  font-weight: 800;
+  font-size: 0.82rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
 .rise {
   width: 100%;
   height: auto;
