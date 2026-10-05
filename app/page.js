@@ -239,7 +239,7 @@ export default function Home() {
               <span className="eyebrow">Our Journey</span>
               <h2>Now Entering Our Third Year</h2>
               <p>
-                Two successful years, over 700 entries, and countless stories of resilience transformed into art and
+                Two successful years, over 750+ entries, and countless stories of resilience transformed into art and
                 words. Main Na Mano Haar now enters its third year. And this time, your story could be the one we’re
                 waiting to hear.
               </p>
