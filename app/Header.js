@@ -9,7 +9,7 @@ const LINKS = [
   ["#rules", "Rules"],
   ["#how-to-enter", "How to Enter"],
   ["#prizes", "Prizes"],
-  ["#judges", "Judges"],
+
   ["#organisers", "Organisers"],
 ];
 
