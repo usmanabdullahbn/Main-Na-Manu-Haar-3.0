@@ -456,7 +456,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Judges */}
+        {/* Judges — commented out until panel is confirmed
         <section className="section section--soft" id="judges">
           <div className="container">
             <div className="section-head">
@@ -484,6 +484,7 @@ export default function Home() {
             )}
           </div>
         </section>
+        */}
 
         {/* Organisers */}
         <section className="section section--dark" id="organisers">
