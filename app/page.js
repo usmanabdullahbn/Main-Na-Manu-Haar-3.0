@@ -182,7 +182,7 @@ export default function Home() {
             <div className="section-head">
               <h2>The Campaign at a Glance</h2>
             </div>
-            <div className="grid grid-4">
+            <div className="grid grid-3">
               <div className="stat stat--featured">
                 <div className="stat__num">8+</div>
                 <div className="stat__label">Minimum Age</div>
