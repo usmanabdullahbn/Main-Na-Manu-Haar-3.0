@@ -189,7 +189,7 @@ export default function Home() {
               </div>
               <div className="stat">
                 <div className="stat__num">2023</div>
-                <div className="stat__label">Annual Competition Since</div>
+                <div className="stat__label">Since</div>
               </div>
               <div className="stat">
                 <div className="stat__num">5,000</div>
